@@ -15,6 +15,8 @@
 		8F0773EC1B32D45E0023DC27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0773EB1B32D45E0023DC27 /* Images.xcassets */; };
 		8F0773EF1B32D45E0023DC27 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F0773ED1B32D45E0023DC27 /* LaunchScreen.xib */; };
 		8F0773FB1B32D45E0023DC27 /* testWriteToPlistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0773FA1B32D45E0023DC27 /* testWriteToPlistTests.m */; };
+		8F0774051B331BC60023DC27 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F0774041B331BC60023DC27 /* UserData.plist */; };
+		8F0774091B3353E70023DC27 /* NorthNormalTrain.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F0774081B3353E70023DC27 /* NorthNormalTrain.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		8F0773F41B32D45E0023DC27 /* testWriteToPlistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testWriteToPlistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0773F91B32D45E0023DC27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F0773FA1B32D45E0023DC27 /* testWriteToPlistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testWriteToPlistTests.m; sourceTree = "<group>"; };
+		8F0774041B331BC60023DC27 /* UserData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserData.plist; sourceTree = "<group>"; };
+		8F0774081B3353E70023DC27 /* NorthNormalTrain.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NorthNormalTrain.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 			children = (
 				8F0773DC1B32D45E0023DC27 /* Info.plist */,
 				8F0773DD1B32D45E0023DC27 /* main.m */,
+				8F0774041B331BC60023DC27 /* UserData.plist */,
+				8F0774081B3353E70023DC27 /* NorthNormalTrain.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -203,6 +209,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F0773EA1B32D45E0023DC27 /* Main.storyboard in Resources */,
+				8F0774051B331BC60023DC27 /* UserData.plist in Resources */,
+				8F0774091B3353E70023DC27 /* NorthNormalTrain.plist in Resources */,
 				8F0773EF1B32D45E0023DC27 /* LaunchScreen.xib in Resources */,
 				8F0773EC1B32D45E0023DC27 /* Images.xcassets in Resources */,
 			);
@@ -422,6 +430,7 @@
 				8F0774001B32D45E0023DC27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8F0774011B32D45E0023DC27 /* Build configuration list for PBXNativeTarget "testWriteToPlistTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +439,7 @@
 				8F0774031B32D45E0023DC27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

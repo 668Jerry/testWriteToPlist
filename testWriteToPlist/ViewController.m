@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+//    [appDelegate testWriteNSStringOfUserData];
+//    [appDelegate testReadNSStringOfUserData];
+//    
+//    NSLog(@"[appDelegate readPlist];");
+//    [appDelegate readPlist];
+//    NSLog(@"[appDelegate writePlist];");
+//    [appDelegate writePlist];
+//    NSLog(@"[appDelegate readPlist];");
+//    [appDelegate readPlist];
 }
 
 - (void)didReceiveMemoryWarning {

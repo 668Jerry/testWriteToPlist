@@ -14,9 +14,30 @@
 
 @implementation AppDelegate
 
+- (void)popup:(NSString *)nssTitle message:(NSString *)nssMessage {
+    [[[UIAlertView alloc] initWithTitle:nssTitle
+                                                    message:nssMessage
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil] show];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+//    [self testReadNSStringOfUserData];
+//    [self testReadNSArrayOfUserData];
+//    [self testReadNSStringOfNorthNormalTrain];
+    
+//    [self testWriteNSStringOfUserData];
+//    [self testWriteNSArrayOfUserData];
+//    [self testWriteNSStringOfNorthNormalTrain];
+    
+//    [self testReadNSStringOfUserData];
+//    [self testReadNSArrayOfUserData];
+//    [self testReadNSStringOfNorthNormalTrain];
+    [self readAllFromMyPlist];
+    [self writeAllToMyPlist];
+    [self readAllFromMyPlist];
     return YES;
 }
 
@@ -123,5 +144,162 @@
         }
     }
 }
+
+- (void)testReadNSStringOfUserData {
+    NSDictionary *nsdPlistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"]];
+    if (nsdPlistDictionary != nil) {
+        [self popup:@"sTest" message:[nsdPlistDictionary objectForKey:@"sTest"]];
+        NSLog(@"%@", [nsdPlistDictionary objectForKey:@"sTest"]);
+    } else {
+        NSLog(@"bug");
+    }
+    nsdPlistDictionary = nil;
+}
+
+- (void)testReadNSArrayOfUserData {
+    NSDictionary *nsdPlistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"]];
+    if (nsdPlistDictionary != nil) {
+        [self popup:@"aTest" message:[NSString stringWithFormat:@"%ld", (long)[[nsdPlistDictionary objectForKey:@"aTest"]count]]];
+    }
+    nsdPlistDictionary = nil;
+}
+
+- (void)testReadNSStringOfNorthNormalTrain {
+    NSDictionary *nsdPlistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"]];
+    if (nsdPlistDictionary != nil) {
+        [self popup:@"NorthNormalTrain" message:[NSString stringWithFormat:@"%ld", (long)[[nsdPlistDictionary objectForKey:@"NorthNormalTrain"]count]]];
+    }
+    nsdPlistDictionary = nil;
+}
+
+- (void)writeToMyPlist
+{
+    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
+    NSString *nssPlistSrc = [[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"];
+    NSString *nssPlistDst = [NSString stringWithFormat:@"%@/Documents/UserData.plist", NSHomeDirectory()];
+    if (! [nsfmPlistFileManager fileExistsAtPath:nssPlistDst]) {
+        [nsfmPlistFileManager copyItemAtPath:nssPlistSrc toPath:nssPlistDst error:nil];
+    }
+    nsfmPlistFileManager = nil;
+    nssPlistSrc = nil;
+
+    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:nssPlistDst];
+    [nsmdPlistDictionary setValue:@"v_sTest_new" forKey:@"sTest"];
+    [nsmdPlistDictionary writeToFile:nssPlistDst atomically:YES];
+    nsmdPlistDictionary = nil;
+}
+
+- (void)testWriteNSStringOfUserData {
+//    NSDictionary *nsdPlistDictionary = [NSDictionary new];
+//    [self popup:@"sTest before write" message:[nsmdPlistDictionary objectForKey:@"sTest"]];
+//    [self popup:@"sTest after write" message:[nsmdPlistDictionary objectForKey:@"sTest"]];
+//    NSLog(@"%d", [nsmdPlistDictionary writeToFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"] atomically:YES]);
+//    NSLog(@"%d", [@"abcde" writeToFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"] atomically:YES]);
+//    nsmdPlistDictionary = nil;
+
+//    [[[NSDictionary alloc]initWithObjects:[[NSArray alloc]initWithObjects:@"v_sTest_new",nil] forKeys:[[NSArray alloc]initWithObjects:@"sTest",nil]] writeToFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"] atomically:YES];
+
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsPath = [paths objectAtIndex:0];
+//    NSString *photoCacheFilename = [documentsPath stringByAppendingPathComponent:@"UserData"];
+//    [[[[NSDictionary alloc]initWithObjects:[[NSArray alloc]initWithObjects:@"v_sTest_new",nil]
+//                                  forKeys:[[NSArray alloc]initWithObjects:@"sTest",nil]]] writeToFile:photoCacheFilename atomically:YES];
+    
+//    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
+//    NSString *nssPlistSrc = [[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"];
+//    NSString *nssPlistDst = [NSString stringWithFormat:@"%@/Documents/UserData.plist", NSHomeDirectory()];
+//    if (! [nsfmPlistFileManager fileExistsAtPath:nssPlistDst]) {
+//        [nsfmPlistFileManager copyItemAtPath:nssPlistSrc toPath:nssPlistDst error:nil];
+//    }
+//    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:nssPlistDst];
+//    [nsmdPlistDictionary setValue:@"v_sTest_new" forKey:@"sTest"];
+//    NSLog(@"%hhd", [nsmdPlistDictionary writeToFile:nssPlistDst atomically:YES]);
+//    nsmdPlistDictionary = nil;
+//    [self testReadNSStringOfUserData];
+    
+    [self writeToMyPlist];
+}
+
+- (void)testWriteNSArrayOfUserData {
+    NSMutableDictionary *nsmdPlistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"]];
+    [[nsmdPlistDictionary objectForKey:@"aTest"]addObject:@"v_aTest3"];
+    [nsmdPlistDictionary writeToFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"] atomically:YES];
+    nsmdPlistDictionary = nil;
+}
+
+- (void)testWriteNSStringOfNorthNormalTrain {
+    NSMutableDictionary *nsmdPlistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"]];
+    [[nsmdPlistDictionary objectForKey:@"NorthNormalTrain"]addObject:[[NSDictionary alloc]initWithObjects:[[NSArray alloc]initWithObjects:@"1001", @"10:50", nil] forKeys:[[NSArray alloc]initWithObjects:@"sStation", @"sARRTime", nil]]];
+    [nsmdPlistDictionary writeToFile:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"] atomically:YES];
+    nsmdPlistDictionary = nil;
+}
+
+- (NSString *)dataFilePath
+{
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [path objectAtIndex:0];
+    return [documentDirectory stringByAppendingPathComponent:@"UserData.plist"];
+}
+
+- (void)writePlist
+{
+    NSMutableArray *anArray = [[NSMutableArray alloc]init];
+    [anArray addObject:@"Milmers"];
+    [anArray addObject:@"Xcode"];
+    [anArray writeToFile:[self dataFilePath] atomically:YES];
+}
+
+- (void)readPlist
+{
+    NSString *filePath = [self dataFilePath];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
+        NSArray *array = [[NSArray alloc]initWithContentsOfFile:filePath];
+        NSLog(@"%@\n", array);
+        NSLog(@"%@\n", filePath);
+    }
+}
+
+//[[Plist
+- (void)initMyPlist
+{
+    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
+    NSString *nssPlistSrc = [[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"];
+    _nssPlistDst = [NSString stringWithFormat:@"%@/Documents/UserData.plist", NSHomeDirectory()];
+    if (! [nsfmPlistFileManager fileExistsAtPath:_nssPlistDst]) {
+        [nsfmPlistFileManager copyItemAtPath:nssPlistSrc toPath:_nssPlistDst error:nil];
+    }
+    nsfmPlistFileManager = nil;
+    nssPlistSrc = nil;
+}
+
+- (void)writeAllToMyPlist
+{
+    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
+    NSString *nssPlistDst = [NSString stringWithFormat:@"%@/Documents/UserData.plist", NSHomeDirectory()];
+    if (! [nsfmPlistFileManager fileExistsAtPath:nssPlistDst]) {
+        [nsfmPlistFileManager copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"] toPath:nssPlistDst error:nil];
+    }
+    nsfmPlistFileManager = nil;
+    
+    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:nssPlistDst];
+    [nsmdPlistDictionary setValue:@"v_sTest_new_17" forKey:@"sTest"];
+    [nsmdPlistDictionary writeToFile:nssPlistDst atomically:YES];
+    nsmdPlistDictionary = nil;
+}
+
+- (void)readAllFromMyPlist {;
+    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
+    NSString *nssPlistDst = [NSString stringWithFormat:@"%@/Documents/UserData.plist", NSHomeDirectory()];
+    if (! [nsfmPlistFileManager fileExistsAtPath:nssPlistDst]) {
+        [nsfmPlistFileManager copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"] toPath:nssPlistDst error:nil];
+    }
+    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:nssPlistDst];
+    if (nsmdPlistDictionary != nil) {
+        NSLog(@"readAllFromMyPlist: %@", [nsmdPlistDictionary objectForKey:@"sTest"]);
+    }
+    nsfmPlistFileManager = nil;
+    nssPlistDst = nil;
+}
+//]]Plist
 
 @end

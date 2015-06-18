@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NorthNormalTrain</key>
+	<array>
+		<dict>
+			<key>sClass</key>
+			<string>1001</string>
+			<key>dTime</key>
+			<dict>
+				<key>sStation</key>
+				<string>1000</string>
+				<key>sARRTime</key>
+				<string>05:50</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>sClass</key>
+			<string>1002</string>
+			<key>dTime</key>
+			<dict>
+				<key>sStation</key>
+				<string>1001</string>
+				<key>sARRTime</key>
+				<string>06:50</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

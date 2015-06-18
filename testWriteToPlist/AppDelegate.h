@@ -17,9 +17,16 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+@property (strong, nonatomic) NSString *nssPlistDst;
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+- (void)testWriteNSStringOfUserData;
+- (void)testReadNSStringOfUserData;
+
+- (void)writePlist;
+- (void)readPlist;
 
 @end
 
