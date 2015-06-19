@@ -34,11 +34,11 @@
 }
 
 - (void)testWriteNSStringOfUserData {
-    [self writeAllToMyPlist:@"UserData" value:[[NSArray alloc]initWithObjects:@"v_sTest_new_UserData_24", nil]key:[[NSArray alloc]initWithObjects:@"sTest", nil]];
+    [self writeAllToMyPlist:@"UserData" value:[[NSArray alloc]initWithObjects:@"v_sTest_UserData_25", nil]key:[[NSArray alloc]initWithObjects:@"sTest", nil]];
 }
 
 - (void)testWriteNSStringOfNorthNormalTrain {
-    [self writeAllToMyPlist:@"NorthNormalTrain" value:[[NSArray alloc]initWithObjects:@"v_sTest_new_North_24", nil]key:[[NSArray alloc]initWithObjects:@"sTest", nil]];
+    [self writeAllToMyPlist:@"NorthNormalTrain" value:[[NSArray alloc]initWithObjects:@"v_sTest_North_25", nil]key:[[NSArray alloc]initWithObjects:@"sTest", nil]];
 }
 
 //[[Plist
